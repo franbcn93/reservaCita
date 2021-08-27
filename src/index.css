@@ -5,12 +5,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-image: linear-gradient(
-    -225deg,
-    #a445b2 0%,
-    #d41872 52%,
-    #ff0066 100%
-  );
+  background-image: url("./Others/ground.jpg");
   min-height: 100%;
   padding-bottom: 5rem;
 }
@@ -95,4 +90,19 @@ input[type="time"] {
   text-transform: uppercase;
   text-align: center;
   font-family: "Staatliches", cursive;
+}
+
+.buttonPlus {
+  background-image: url("./Others/plus.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  height: 60px;
+}
+
+#rock {
+  width: 150px;
+  height: 150px;
+  background-image: url(http://th07.deviantart.net/fs70/150/i/2013/012/c/6/rock_01_png___by_alzstock-d5r84up.png);
+  background-repeat: no-repeat;
 }

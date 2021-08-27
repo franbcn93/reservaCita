@@ -1,15 +1,17 @@
 import React, { Fragment, useState } from "react";
+import Button from "react-bootstrap/Button";
 import { uuid } from "uuidv4";
 import PropTypes from "prop-types";
+import { Row, Col } from "react-bootstrap";
 
 export const Formulario = ({ crearCita }) => {
   // Crear State de citas
   const [cita, actualizarCita] = useState({
-    mascota: "",
-    propietario: "",
-    fecha: "",
-    hora: "",
-    sintomas: "",
+    destino: "",
+    fechaEntrada: "",
+    fechaSalida: "",
+    adultos: 1,
+    niños: 0,
   });
 
   const [error, actualizarError] = useState(false);
@@ -22,20 +24,24 @@ export const Formulario = ({ crearCita }) => {
     });
 
   // Extraer valores
-  const { mascota, propietario, fecha, hora, sintomas } = cita;
+  const { destino, fechaEntrada, fechaSalida, adultos, niños } = cita;
+
+  // Encontrar el dia de hoy
+  const today = new Date(
+    new Date().getTime() - new Date().getTimezoneOffset() * 60000
+  )
+    .toISOString()
+    .split("T")[0];
 
   //Cuando el usuario presiona agregar cita
   const submitCita = (e) => {
     e.preventDefault();
 
-    
     //   Validar
     if (
-      mascota.trim() === "" ||
-      propietario.trim() === "" ||
-      fecha.trim() === "" ||
-      hora.trim() === "" ||
-      sintomas.trim() === ""
+      destino.trim() === "" ||
+      fechaEntrada.trim() === "" ||
+      fechaSalida.trim() === ""
     ) {
       actualizarError(true);
       return;
@@ -56,63 +62,75 @@ export const Formulario = ({ crearCita }) => {
 
   return (
     <Fragment>
-      <h2 data-testid="titulo">Crear citas</h2>
+      <h2 data-testid="titulo">Crear reserva</h2>
       {error ? (
-        <p data-testid="alerta" className="alerta-error">Todos los campos son obligatorios</p>
+        <p data-testid="alerta" className="alerta-error">
+          Todos los campos son obligatorios
+        </p>
       ) : null}
       <form onSubmit={submitCita} action="">
-        <label htmlFor="">Nombre mascota</label>
+        <label htmlFor="">Destino de tu viaje</label>
         <input
-          data-testid="mascota"
+          data-testid="destino"
           type="text"
-          name="mascota"
+          name="destino"
           className="u-full-width"
-          placeholder="Nombre mascota"
+          placeholder="¿A dónde vas?"
           onChange={actualizarState}
-          value={mascota}
+          value={destino}
         />
-        <label htmlFor="">Nombre dueño</label>
+        <label htmlFor="">Fecha Entrada</label>
         <input
-          data-testid="propietario"
-          type="text"
-          name="propietario"
-          className="u-full-width"
-          placeholder="Nombre dueño mascota"
-          onChange={actualizarState}
-          value={propietario}
-        />
-        <label htmlFor="">Fecha</label>
-        <input
-          data-testid="fecha"
+          data-testid="fechaEntrada"
           type="date"
-          name="fecha"
+          name="fechaEntrada"
+          min={today}
           className="u-full-width"
           onChange={actualizarState}
-          value={fecha}
+          value={fechaEntrada}
         />
-        <label htmlFor="">Hora</label>
+        <label htmlFor="">Fecha Salida</label>
         <input
-          data-testid="hora"
-          type="time"
-          name="hora"
+          data-testid="fechaSalida"
+          type="date"
+          name="fechaSalida"
+          min="2000-01-02"
           className="u-full-width"
           onChange={actualizarState}
-          value={hora}
+          value={fechaSalida}
         />
-        <label htmlFor="">Síntomas</label>
-        <textarea
-          data-testid="sintomas"    
-          name="sintomas"
-          id=""
-          style={{ width: "100%" }}
-          rows="10"
-          onChange={actualizarState}
-          value={sintomas}
-        ></textarea>
-        <button 
-        data-testid="btn-submit"
-        type="submit" 
-        className="u-full-width button-primary">
+        <Row>
+          <Col>
+            <label htmlFor="">Adultos</label>
+            <input
+              data-testid="adultos"
+              type="number"
+              name="adultos"
+              min="1"
+              className="u-full-width"
+              onChange={actualizarState}
+              value={adultos}
+            />
+          </Col>
+          <Col>
+            <label htmlFor="">Niños</label>
+            <input
+              data-testid="niños"
+              type="number"
+              name="niños"
+              min="0"
+              className="u-full-width"
+              onChange={actualizarState}
+              value={niños}
+            />
+          </Col>
+        </Row>
+
+        <button
+          data-testid="btn-submit"
+          type="submit"
+          className="u-full-width button-primary"
+        >
           Agregar cita
         </button>
       </form>

@@ -34,15 +34,17 @@ function App() {
   // Mensaje condicional
   const titulo = citas.length === 0 ? "No hay citas" : "Administra tus citas";
 
+  const punto = ".";
   return (
     <Fragment>
-      <h1 data-testid="nombre-app">Administrador de Pacientes</h1>;
+      <h1 data-testid="nombre-app">Administrador de Reserva Hotel</h1>;
       <div className="container">
         <div className="row">
-          <div className="one-half column">
+          <div className="five columns">
             <Formulario crearCita={crearCita} />
           </div>
-          <div className="one-half column">
+          <div className="two columns">{punto}</div>
+          <div className="five columns">
             <h2 data-testid="titulo-dinamico">{titulo}</h2>
             {citas.map((cita) => (
               <Cita key={cita.id} cita={cita} eliminarCita={eliminarCita} />
