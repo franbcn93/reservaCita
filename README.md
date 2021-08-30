@@ -1,4 +1,4 @@
-Puedes ver el proyecto y probarlo. [Ver el proyecto de administrador de citas](https://franbcn93.github.io/AdminCitas/).
+Puedes ver el proyecto y probarlo. [Ver el proyecto de administrador de citas](https://franbcn93.github.io/reservaCita/).
 
 ## Available Scripts
 
