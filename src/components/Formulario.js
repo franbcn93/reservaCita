@@ -94,7 +94,7 @@ export const Formulario = ({ crearCita }) => {
           data-testid="fechaSalida"
           type="date"
           name="fechaSalida"
-          min="2000-01-02"
+          min={fechaEntrada}
           className="u-full-width"
           onChange={actualizarState}
           value={fechaSalida}

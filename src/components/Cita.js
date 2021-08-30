@@ -4,19 +4,19 @@ import PropTypes from "prop-types";
 export const Cita = ({ cita, eliminarCita }) => (
   <div data-testid="cita" className="cita">
     <p>
-      Mascota: <span>{cita.mascota}</span>
+      Destino: <span>{cita.destino}</span>
     </p>
     <p>
-      Dueño: <span>{cita.propietario}</span>
+      Fecha Entrada: <span>{cita.fechaEntrada}</span>
     </p>
     <p>
-      Fecha: <span>{cita.fecha}</span>
+      Fecha Salida: <span>{cita.fechaSalida}</span>
     </p>
     <p>
-      Hora: <span>{cita.hora}</span>
+      Adultos: <span>{cita.adultos}</span>
     </p>
     <p>
-      Síntomas: <span>{cita.sintomas}</span>
+      Niños: <span>{cita.niños}</span>
     </p>
     <button
       data-testid="btn-eliminar"

@@ -32,7 +32,8 @@ function App() {
   };
 
   // Mensaje condicional
-  const titulo = citas.length === 0 ? "No hay citas" : "Administra tus citas";
+  const titulo =
+    citas.length === 0 ? "No hay reservas" : "Administra tus reservas";
 
   const punto = ".";
   return (
