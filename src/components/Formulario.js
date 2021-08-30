@@ -1,12 +1,11 @@
 import React, { Fragment, useState } from "react";
-import Button from "react-bootstrap/Button";
 import { uuid } from "uuidv4";
 import PropTypes from "prop-types";
 import { Row, Col } from "react-bootstrap";
 
-export const Formulario = ({ crearCita }) => {
-  // Crear State de citas
-  const [cita, actualizarCita] = useState({
+export const Formulario = ({ crearReserva }) => {
+  // Crear State de Reservas
+  const [reserva, actualizarReserva] = useState({
     destino: "",
     fechaEntrada: "",
     fechaSalida: "",
@@ -18,13 +17,13 @@ export const Formulario = ({ crearCita }) => {
 
   //   Función que se ejecuta cada vez que el usuario escribe en el input
   const actualizarState = (e) =>
-    actualizarCita({
-      ...cita,
+    actualizarReserva({
+      ...reserva,
       [e.target.name]: e.target.value,
     });
 
   // Extraer valores
-  const { destino, fechaEntrada, fechaSalida, adultos, niños } = cita;
+  const { destino, fechaEntrada, fechaSalida, adultos, niños } = reserva;
 
   // Encontrar el dia de hoy
   const today = new Date(
@@ -33,8 +32,8 @@ export const Formulario = ({ crearCita }) => {
     .toISOString()
     .split("T")[0];
 
-  //Cuando el usuario presiona agregar cita
-  const submitCita = (e) => {
+  //Cuando el usuario presiona agregar Reserva
+  const submitReserva = (e) => {
     e.preventDefault();
 
     //   Validar
@@ -51,13 +50,20 @@ export const Formulario = ({ crearCita }) => {
     actualizarError(false);
 
     //   Asignar iD
-    cita.id = uuid();
-    console.log(cita);
+    reserva.id = uuid();
+    console.log(reserva);
 
-    // Crear cita
-    crearCita(cita);
+    // Crear Reserva
+    crearReserva(reserva);
 
     // Reiniciar el form
+    actualizarReserva({
+      destino: "",
+      fechaEntrada: "",
+      fechaSalida: "",
+      adultos: 1,
+      niños: 0,
+    });
   };
 
   return (
@@ -68,7 +74,7 @@ export const Formulario = ({ crearCita }) => {
           Todos los campos son obligatorios
         </p>
       ) : null}
-      <form onSubmit={submitCita} action="">
+      <form onSubmit={submitReserva} action="">
         <label htmlFor="">Destino de tu viaje</label>
         <input
           data-testid="destino"
@@ -131,7 +137,7 @@ export const Formulario = ({ crearCita }) => {
           type="submit"
           className="u-full-width button-primary"
         >
-          Agregar cita
+          Agregar Reserva
         </button>
       </form>
     </Fragment>
@@ -139,5 +145,5 @@ export const Formulario = ({ crearCita }) => {
 };
 
 Formulario.propTypes = {
-  crearCita: PropTypes.func.isRequired,
+  crearReserva: PropTypes.func.isRequired,
 };

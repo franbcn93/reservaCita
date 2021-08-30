@@ -1,27 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const Reserva = ({ cita, eliminarCita }) => (
-  <div data-testid="cita" className="cita">
+export const Reserva = ({ reserva, eliminarReserva }) => (
+  <div data-testid="reserva" className="cita">
     <p>
-      Destino: <span>{cita.destino}</span>
+      Destino: <span>{reserva.destino}</span>
     </p>
     <p>
-      Fecha Entrada: <span>{cita.fechaEntrada}</span>
+      Fecha Entrada: <span>{reserva.fechaEntrada}</span>
     </p>
     <p>
-      Fecha Salida: <span>{cita.fechaSalida}</span>
+      Fecha Salida: <span>{reserva.fechaSalida}</span>
     </p>
     <p>
-      Adultos: <span>{cita.adultos}</span>
+      Adultos: <span>{reserva.adultos}</span>
     </p>
     <p>
-      Niños: <span>{cita.niños}</span>
+      Niños: <span>{reserva.niños}</span>
     </p>
     <button
       data-testid="btn-eliminar"
       className="button eliminar u-full-width"
-      onClick={() => eliminarCita(cita.id)}
+      onClick={() => eliminarReserva(reserva.id)}
     >
       Eliminar &times;
     </button>
@@ -29,6 +29,6 @@ export const Reserva = ({ cita, eliminarCita }) => (
 );
 
 Reserva.propTypes = {
-  cita: PropTypes.object.isRequired,
-  eliminarCita: PropTypes.func.isRequired,
+  reserva: PropTypes.object.isRequired,
+  eliminarReserva: PropTypes.func.isRequired,
 };

@@ -3,37 +3,37 @@ import { Formulario } from "./components/Formulario";
 import { Reserva } from "./components/Reserva";
 
 function App() {
-  // Citas en el localStorage
-  let citasIniciales = JSON.parse(localStorage.getItem("citas"));
-  if (!citasIniciales) {
-    citasIniciales = [];
+  // reservas en el localStorage
+  let ReservasIniciales = JSON.parse(localStorage.getItem("reservas"));
+  if (!ReservasIniciales) {
+    ReservasIniciales = [];
   }
-  //  Arreglo de citas
-  const [citas, guardarCitas] = useState(citasIniciales);
+  //  Arreglo de reservas
+  const [reservas, guardarReservas] = useState(ReservasIniciales);
 
   //  UseEffect para realizar ciertas operaciones cuando el satte cambia
   useEffect(() => {
-    if (citasIniciales) {
-      localStorage.setItem("citas", JSON.stringify(citas));
+    if (ReservasIniciales) {
+      localStorage.setItem("reservas", JSON.stringify(reservas));
     } else {
-      localStorage.setItem("citas", JSON.stringify([]));
+      localStorage.setItem("reservas", JSON.stringify([]));
     }
-  }, [citas, citasIniciales]);
+  }, [reservas, ReservasIniciales]);
 
-  // Función que tome las citas actuales y agregue la nueva
-  const crearCita = (cita) => {
-    guardarCitas([...citas, cita]);
+  // Función que tome las reservas actuales y agregue la nueva
+  const crearReserva = (reserva) => {
+    guardarReservas([...reservas, reserva]);
   };
 
   // Función que elimina una cita por su id
-  const eliminarCita = (id) => {
-    const nuevasCitas = citas.filter((cita) => cita.id !== id);
-    guardarCitas(nuevasCitas);
+  const eliminarReserva = (id) => {
+    const nuevasReservas = reservas.filter((reserva) => reserva.id !== id);
+    guardarReservas(nuevasReservas);
   };
 
   // Mensaje condicional
   const titulo =
-    citas.length === 0 ? "No hay reservas" : "Administra tus reservas";
+    reservas.length === 0 ? "No hay reservas" : "Administra tus reservas";
 
   const punto = ".";
   return (
@@ -42,13 +42,17 @@ function App() {
       <div className="container">
         <div className="row">
           <div className="five columns">
-            <Formulario crearCita={crearCita} />
+            <Formulario crearReserva={crearReserva} />
           </div>
           <div className="two columns">{punto}</div>
           <div className="five columns">
             <h2 data-testid="titulo-dinamico">{titulo}</h2>
-            {citas.map((cita) => (
-              <Reserva key={cita.id} cita={cita} eliminarCita={eliminarCita} />
+            {reservas.map((reserva) => (
+              <Reserva
+                key={reserva.id}
+                reserva={reserva}
+                eliminarReserva={eliminarReserva}
+              />
             ))}
           </div>
         </div>
