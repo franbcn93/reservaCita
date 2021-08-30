@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/reservaCita/static/css/main.8e44f61d.chunk.css",
+    "main.js": "/reservaCita/static/js/main.b46c363b.chunk.js",
+    "main.js.map": "/reservaCita/static/js/main.b46c363b.chunk.js.map",
+    "runtime-main.js": "/reservaCita/static/js/runtime-main.af2b9fd0.js",
+    "runtime-main.js.map": "/reservaCita/static/js/runtime-main.af2b9fd0.js.map",
+    "static/js/2.a0702dee.chunk.js": "/reservaCita/static/js/2.a0702dee.chunk.js",
+    "static/js/2.a0702dee.chunk.js.map": "/reservaCita/static/js/2.a0702dee.chunk.js.map",
+    "static/js/3.b0afb0ea.chunk.js": "/reservaCita/static/js/3.b0afb0ea.chunk.js",
+    "static/js/3.b0afb0ea.chunk.js.map": "/reservaCita/static/js/3.b0afb0ea.chunk.js.map",
+    "index.html": "/reservaCita/index.html",
+    "static/css/main.8e44f61d.chunk.css.map": "/reservaCita/static/css/main.8e44f61d.chunk.css.map",
+    "static/js/2.a0702dee.chunk.js.LICENSE.txt": "/reservaCita/static/js/2.a0702dee.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/reservaCita/static/media/plus.14100e6f.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.af2b9fd0.js",
+    "static/js/2.a0702dee.chunk.js",
+    "static/css/main.8e44f61d.chunk.css",
+    "static/js/main.b46c363b.chunk.js"
+  ]
+}
