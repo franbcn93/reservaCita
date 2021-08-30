@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Formulario } from "./components/Formulario";
-import { Cita } from "./components/Cita";
+import { Reserva } from "./components/Reserva";
 
 function App() {
   // Citas en el localStorage
@@ -48,7 +48,7 @@ function App() {
           <div className="five columns">
             <h2 data-testid="titulo-dinamico">{titulo}</h2>
             {citas.map((cita) => (
-              <Cita key={cita.id} cita={cita} eliminarCita={eliminarCita} />
+              <Reserva key={cita.id} cita={cita} eliminarCita={eliminarCita} />
             ))}
           </div>
         </div>

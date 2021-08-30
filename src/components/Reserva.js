@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const Cita = ({ cita, eliminarCita }) => (
+export const Reserva = ({ cita, eliminarCita }) => (
   <div data-testid="cita" className="cita">
     <p>
       Destino: <span>{cita.destino}</span>
@@ -28,7 +28,7 @@ export const Cita = ({ cita, eliminarCita }) => (
   </div>
 );
 
-Cita.propTypes = {
+Reserva.propTypes = {
   cita: PropTypes.object.isRequired,
   eliminarCita: PropTypes.func.isRequired,
 };
