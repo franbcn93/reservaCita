@@ -2,16 +2,29 @@ import React, { Fragment, useState } from "react";
 import { uuid } from "uuidv4";
 import PropTypes from "prop-types";
 import { Row, Col } from "react-bootstrap";
+import ComboBox from "./ComboBox";
 
 export const Formulario = ({ crearReserva }) => {
+  const [reservaProvincia, setReservaProvincia] = useState({});
   // Crear State de Reservas
   const [reserva, actualizarReserva] = useState({
+    provincia: "",
     destino: "",
     fechaEntrada: "",
     fechaSalida: "",
     adultos: 1,
     niños: 0,
   });
+  // console.log(reservaProvincia.provincia);
+
+  const crearProvincia = (provincia) => {
+    setReservaProvincia(provincia);
+
+    console.log(provincia.provincia);
+    // actualizarReserva({
+    //   provincia: provincia.provincia,
+    // });
+  };
 
   const [error, actualizarError] = useState(false);
 
@@ -56,8 +69,11 @@ export const Formulario = ({ crearReserva }) => {
     // Crear Reserva
     crearReserva(reserva);
 
+    crearProvincia(reservaProvincia);
+
     // Reiniciar el form
     actualizarReserva({
+      provincia: "",
       destino: "",
       fechaEntrada: "",
       fechaSalida: "",
@@ -76,6 +92,14 @@ export const Formulario = ({ crearReserva }) => {
       ) : null}
       <form onSubmit={submitReserva} action="">
         <label htmlFor="">Destino de tu viaje</label>
+        <ComboBox
+          className="combo"
+          crearProvincia={crearProvincia}
+          // name="destino"
+          // value={destino2}
+          // onChange={actualizarState}
+          // value={destino}
+        />
         <input
           data-testid="destino"
           type="text"

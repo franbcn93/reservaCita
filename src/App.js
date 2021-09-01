@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import ComboBox from "./components/ComboBox";
 import { Formulario } from "./components/Formulario";
 import { Reserva } from "./components/Reserva";
 
@@ -30,6 +31,8 @@ function App() {
     const nuevasReservas = reservas.filter((reserva) => reserva.id !== id);
     guardarReservas(nuevasReservas);
   };
+
+  // console.log(destinoViaje);
 
   // Mensaje condicional
   const titulo =
