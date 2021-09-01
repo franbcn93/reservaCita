@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 export const Reserva = ({ reserva, eliminarReserva }) => (
   <div data-testid="reserva" className="cita">
     <p>
-      Destino: <span>{reserva.destino}</span>
+      Destino: <span>{reserva.provincia}</span>
     </p>
     <p>
       Fecha Entrada: <span>{reserva.fechaEntrada}</span>

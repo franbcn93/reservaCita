@@ -2,29 +2,30 @@ import React, { Fragment, useState } from "react";
 import { uuid } from "uuidv4";
 import PropTypes from "prop-types";
 import { Row, Col } from "react-bootstrap";
-import ComboBox from "./ComboBox";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import ciudades from "../Others/Cities";
 
 export const Formulario = ({ crearReserva }) => {
-  const [reservaProvincia, setReservaProvincia] = useState({});
+  // Guardo la provincia escogida y reservo los otros
+  // datos si es que han sido introducidos
+  // Si el value no es null, guardo los cambios
+  const handleChange = (event, value) =>
+    value
+      ? actualizarReserva({
+          ...reserva,
+          provincia: value.provincia,
+        })
+      : null;
+
   // Crear State de Reservas
   const [reserva, actualizarReserva] = useState({
     provincia: "",
-    destino: "",
     fechaEntrada: "",
     fechaSalida: "",
     adultos: 1,
     niños: 0,
   });
-  // console.log(reservaProvincia.provincia);
-
-  const crearProvincia = (provincia) => {
-    setReservaProvincia(provincia);
-
-    console.log(provincia.provincia);
-    // actualizarReserva({
-    //   provincia: provincia.provincia,
-    // });
-  };
 
   const [error, actualizarError] = useState(false);
 
@@ -36,7 +37,7 @@ export const Formulario = ({ crearReserva }) => {
     });
 
   // Extraer valores
-  const { destino, fechaEntrada, fechaSalida, adultos, niños } = reserva;
+  const { provincia, fechaEntrada, fechaSalida, adultos, niños } = reserva;
 
   // Encontrar el dia de hoy
   const today = new Date(
@@ -45,13 +46,13 @@ export const Formulario = ({ crearReserva }) => {
     .toISOString()
     .split("T")[0];
 
-  //Cuando el usuario presiona agregar Reserva
+  //Cuando el usuario presiona "Agregar Reserva"
   const submitReserva = (e) => {
     e.preventDefault();
 
     //   Validar
     if (
-      destino.trim() === "" ||
+      provincia.length === 0 ||
       fechaEntrada.trim() === "" ||
       fechaSalida.trim() === ""
     ) {
@@ -69,12 +70,9 @@ export const Formulario = ({ crearReserva }) => {
     // Crear Reserva
     crearReserva(reserva);
 
-    crearProvincia(reservaProvincia);
-
     // Reiniciar el form
     actualizarReserva({
-      provincia: "",
-      destino: "",
+      // provincia: "",
       fechaEntrada: "",
       fechaSalida: "",
       adultos: 1,
@@ -92,23 +90,16 @@ export const Formulario = ({ crearReserva }) => {
       ) : null}
       <form onSubmit={submitReserva} action="">
         <label htmlFor="">Destino de tu viaje</label>
-        <ComboBox
-          className="combo"
-          crearProvincia={crearProvincia}
-          // name="destino"
-          // value={destino2}
-          // onChange={actualizarState}
-          // value={destino}
+        <Autocomplete
+          id="combo-box-demo"
+          options={ciudades}
+          getOptionLabel={(option) => option.provincia}
+          onChange={handleChange}
+          renderInput={(params) => (
+            <TextField {...params} label="¿A dónde vas?" variant="outlined" />
+          )}
         />
-        <input
-          data-testid="destino"
-          type="text"
-          name="destino"
-          className="u-full-width"
-          placeholder="¿A dónde vas?"
-          onChange={actualizarState}
-          value={destino}
-        />
+
         <label htmlFor="">Fecha Entrada</label>
         <input
           data-testid="fechaEntrada"
