@@ -60,7 +60,7 @@ export const Formulario = ({ crearReserva }) => {
       return;
     }
 
-    // Eliminarel mensaje previo
+    // Eliminar el mensaje previo
     actualizarError(false);
 
     //   Asignar iD
@@ -72,7 +72,7 @@ export const Formulario = ({ crearReserva }) => {
 
     // Reiniciar el form
     actualizarReserva({
-      // provincia: "",
+      provincia: "",
       fechaEntrada: "",
       fechaSalida: "",
       adultos: 1,

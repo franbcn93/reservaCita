@@ -35,7 +35,9 @@ function App() {
 
   // Mensaje condicional
   const titulo =
-    reservas.length === 0 ? "No hay reservas" : "Administra tus reservas";
+    reservas.length === 0
+      ? "No hay ninguna reserva todavía"
+      : "Administra tus reservas";
 
   const punto = ".";
   return (
